@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anant Kaur — Resume</title>
+<style>
+/* ── ATS-FRIENDLY: minimal styling, no images, no tables, plain text hierarchy ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Inter',Arial,sans-serif;
+  font-size:10.5pt;
+  color:#1a1a1a;
+  background:#ffffff;
+  max-width:820px;
+  margin:0 auto;
+  padding:40px;
+  line-height:1.5;
+}
+
+/* Print button — hidden when printing */
+.print-bar{
+  background:#6E1728;
+  color:#fff;
+  padding:14px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:-40px -40px 40px -40px;
+  font-size:.85rem;
+  font-family:'Inter',sans-serif;
+}
+.print-btn{
+  background:#fff;
+  color:#6E1728;
+  border:none;
+  padding:9px 24px;
+  border-radius:4px;
+  font-weight:700;
+  font-size:.8rem;
+  cursor:pointer;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+.print-btn:hover{background:#f0e0e4;}
+
+/* ── HEADER ── */
+.resume-name{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:28pt;
+  font-weight:700;
+  color:#6E1728;
+  letter-spacing:-0.5px;
+  margin-bottom:4px;
+}
+.resume-title{
+  font-size:11pt;
+  font-weight:600;
+  color:#444;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+.contact-line{
+  font-size:9.5pt;
+  color:#555;
+  display:flex;
+  flex-wrap:wrap;
+  gap:0 16px;
+  margin-bottom:24px;
+  padding-bottom:16px;
+  border-bottom:2px solid #6E1728;
+}
+.contact-line span{display:inline;}
+
+/* ── SECTIONS ── */
+.section{margin-bottom:22px;}
+.section-title{
+  font-size:9pt;
+  font-weight:700;
+  color:#6E1728;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  margin-bottom:10px;
+  padding-bottom:5px;
+  border-bottom:1px solid #e0c8cc;
+}
+.section-body{font-size:10.5pt;}
+
+/* ── SUMMARY ── */
+.summary{
+  font-size:10.5pt;
+  color:#333;
+  line-height:1.7;
+}
+
+/* ── EXPERIENCE ITEMS ── */
+.exp-item{margin-bottom:16px;}
+.exp-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  margin-bottom:2px;
+}
+.exp-org{font-weight:700;font-size:10.5pt;color:#1a1a1a;}
+.exp-period{font-size:9.5pt;color:#777;white-space:nowrap;}
+.exp-role-title{
+  font-size:10pt;
+  font-style:italic;
+  color:#555;
+  margin-bottom:6px;
+}
+.exp-bullets{
+  list-style:disc;
+  padding-left:18px;
+  color:#333;
+}
+.exp-bullets li{
+  margin-bottom:3px;
+  font-size:10.5pt;
+  line-height:1.6;
+}
+
+/* ── METRICS BOX ── */
+.metrics-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 20px;
+  margin:8px 0;
+}
+.metric{
+  font-size:10pt;
+  color:#6E1728;
+  font-weight:600;
+}
+.metric span{color:#555;font-weight:400;}
+
+/* ── CERTIFICATIONS LIST ── */
+.cert-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  padding:5px 0;
+  border-bottom:1px solid #f0e8ea;
+}
+.cert-name{font-size:10.5pt;font-weight:600;color:#1a1a1a;}
+.cert-issuer{font-size:10pt;color:#777;white-space:nowrap;}
+
+/* ── SKILLS GRID ── */
+.skills-cols{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4px 30px;
+}
+.skill-line{font-size:10.5pt;color:#333;padding:2px 0;}
+.skill-line::before{content:'• ';color:#6E1728;font-weight:700;}
+
+/* ── EDUCATION ITEMS ── */
+.edu-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  margin-bottom:10px;
+}
+.edu-left{}
+.edu-deg{font-weight:700;font-size:10.5pt;}
+.edu-school{font-size:10pt;color:#555;margin-top:2px;}
+.edu-year{font-size:9.5pt;color:#777;white-space:nowrap;}
+
+/* ── PRINT ── */
+@media print{
+  .print-bar{display:none;}
+  body{padding:24px;max-width:none;}
+  @page{margin:15mm 18mm;size:A4;}
+  .exp-item,.cert-item,.edu-item{page-break-inside:avoid;}
+  .section{page-break-inside:avoid;}
+}
+</style>
+</head>
+<body>
+
+<!-- Print bar — disappears when printing/saving as PDF -->
+<div class="print-bar">
+  <span>To save as PDF: Click the button → Print → Change destination to "Save as PDF" → Save</span>
+  <button class="print-btn" onclick="window.print()">⬇ Save as PDF</button>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════════ -->
+<h1 class="resume-name">ANANT KAUR</h1>
+<div class="resume-title">Marketing Professional · Content Strategist · Brand Builder</div>
+<div class="contact-line">
+  <span>📧 youremail@gmail.com</span>
+  <span>📱 +91 XXXXXXXXXX</span>
+  <span>📍 Kanpur, UP / Pune, MH</span>
+  <span>🔗 linkedin.com/in/anant-kaur-113320262</span>
+  <span>📸 @_yourfavpunjaban</span>
+  <span>▶ youtube.com/@itsanantkaur</span>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PROFESSIONAL SUMMARY
+══════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title">Professional Summary</div>
+  <p class="summary">
+    Results-driven marketing professional and content strategist currently pursuing MBA in Human
+    Resource Management at Symbiosis Institute of Business Management (SIBM), Pune. Grew a
+    personal brand to 8.7 million organic reach and 10,000+ followers in 3 months; a single
+    Instagram reel achieved 68,852 views and reached 50,190 accounts. Google-certified in Digital
+    Marketing and E-Commerce (Coursera). Completed a Pre-MBA Summer Program at IIM Udaipur and a
+    Fundraising Internship with Muskurahat Foundation. Founded AKS, a handcrafted candle brand,
+    managing all branding, e-commerce, and marketing end-to-end. Seeking a marketing role where
+    creativity and data-driven strategy combine to deliver measurable brand growth.
+  </p>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     KEY METRICS
+══════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title">Key Performance Highlights</div>
+  <div class="metrics-row">
+    <div class="metric">8.7M+ <span>organic reach in 3 months (Instagram)</span></div>
+    <div class="metric">10,000+ <span>Instagram followers</span></div>
+    <div class="metric">68,852 <span>views — single Instagram reel</span></div>
+    <div class="metric">50,190 <span>accounts reached (1 reel)</span></div>
+    <div class="metric">85K+ <span>Pinterest monthly views</span></div>
+    <div class="metric">42K+ <span>YouTube views / 30 days</span></div>
+    <div class="metric">7,155+ <span>Snapchat followers</span></div>
+    <div class="metric">366 <span>new follows from 1 reel</span></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     EXPERIENCE
+══════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title">Experience</div>
+
+  <div class="exp-item">
+    <div class="exp-header">
+      <span class="exp-org">Personal Brand (Self-Employed)</span>
+      <span class="exp-period">March 2026 – Present</span>
+    </div>
+    <div class="exp-role-title">Content Creator & Digital Marketing Strategist</div>
+    <ul class="exp-bullets">
+      <li>Built and scaled personal brand from zero to 8.7 million organic reach and 10,000+ Instagram followers in 3 months.</li>
+      <li>Produced, scripted, filmed and edited short-form video content; a single reel achieved 68,852 views, reached 50,190 accounts and generated 366 new follows.</li>
+      <li>Drove 1.7K saves and 1.6K shares on a single reel — demonstrating deep understanding of platform algorithms and content strategy.</li>
+      <li>Maintained 85,000+ monthly Pinterest views and 42,000+ YouTube views per 30-day period.</li>
+      <li>Analyzed platform analytics to iterate content strategy and optimize reach, engagement, and follower growth.</li>
+      <li>Managed end-to-end content pipeline: ideation, production, scheduling, community management, and performance tracking.</li>
+    </ul>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-header">
+      <span class="exp-org">AKS — Handcrafted Candle Brand</span>
+      <span class="exp-period">2023 – Present</span>
+    </div>
+    <div class="exp-role-title">Founder & Creative Director</div>
+    <ul class="exp-bullets">
+      <li>Conceptualised and launched AKS, a handcrafted candle brand, handling full brand lifecycle from product design to customer delivery.</li>
+      <li>Developed brand identity, visual design, and product positioning independently.</li>
+      <li>Managed e-commerce operations including product listings, order management, and customer engagement.</li>
+      <li>Created all social media marketing content and implemented customer retention strategies.</li>
+      <li>Gained real-world experience in pricing strategy, supplier management, and brand storytelling.</li>
+    </ul>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-header">
+      <span class="exp-org">Kapai Cafe</span>
+      <span class="exp-period">2025</span>
+    </div>
+    <div class="exp-role-title">Brand Campaign Model — Diwali Campaign</div>
+    <ul class="exp-bullets">
+      <li>Represented Kapai Cafe as a brand model for their Diwali marketing campaign.</li>
+      <li>Collaborated with the creative team to align visual direction with brand identity and campaign objectives.</li>
+      <li>Contributed to campaign content that drove brand awareness and festive audience engagement.</li>
+    </ul>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-header">
+      <span class="exp-org">The Bruts — Thrift Clothing Brand</span>
+      <span class="exp-period">2024 – 2025</span>
+    </div>
+    <div class="exp-role-title">Fashion Model & Brand Collaborator</div>
+    <ul class="exp-bullets">
+      <li>Modeled for The Bruts clothing brand, contributing to their visual identity and brand positioning.</li>
+      <li>Participated in content shoots that communicated the brand's aesthetic to its target audience.</li>
+    </ul>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-header">
+      <span class="exp-org">Muskurahat Foundation</span>
+      <span class="exp-period">Feb 19 – Mar 19, 2024</span>
+    </div>
+    <div class="exp-role-title">Fundraising Intern</div>
+    <ul class="exp-bullets">
+      <li>Completed a one-month fundraising internship with Muskurahat Foundation, a children's welfare NGO.</li>
+      <li>Successfully raised Rs 1,930 for the foundation through personal outreach and community engagement campaigns.</li>
+      <li>Developed interpersonal communication, persuasion, and cause-marketing skills in a real-world social impact setting.</li>
+      <li>Awarded Certificate of Completion for demonstrating initiative and meeting fundraising targets.</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════
+     CERTIFICATIONS
+══════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title">Certifications & Training</div>
+
+  <div class="cert-item">
+    <span class="cert-name">Foundations of Digital Marketing & E-Commerce</span>
+    <span class="cert-issuer">Google / Coursera · Dec 2024</span>
+  </div>
+  <div class="cert-item">
+    <span class="cert-name">P&G Brand Campus Champion Challenge — Head & Shoulders</span>
+    <span class="cert-issuer">Unstop · March 2026</span>
+  </div>
+  <div class="cert-item">
+    <span class="cert-name">Branding and Design</span>
+    <span class="cert-issuer">Forage · Jan 2025</span>
+  </div>
+  <div class="cert-item">
+    <span class="cert-name">Pre-MBA Summer Program</span>
+    <span class="cert-issuer">IIM Udaipur</span>
+  </div>
+  <div class="cert-item">
+    <span class="cert-name">IIMB Swayam Certification</span>
+    <span class="cert-issuer">IIM Bangalore / Swayam</span>
+  </div>
+  <div class="cert-item">
+    <span class="cert-name">Certificate of Completion — Fundraising Internship</span>
+    <span class="cert-issuer">Muskurahat Foundation (NGO) · March 2024</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SKILLS
+══════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title">Skills</div>
+  <div class="skills-cols">
+    <div class="skill-line">Content Creation & Short-Form Video</div>
+    <div class="skill-line">Digital Marketing Strategy</div>
+    <div class="skill-line">Brand Strategy & Brand Identity</div>
+    <div class="skill-line">Social Media Management</div>
+    <div class="skill-line">Community Building & Engagement</div>
+    <div class="skill-line">E-Commerce & Product Marketing</div>
+    <div class="skill-line">Data Analytics & Performance Tracking</div>
+    <div class="skill-line">Email Marketing</div>
+    <div class="skill-line">Marketing Planning & Execution</div>
+    <div class="skill-line">Brand Awareness Campaigns</div>
+    <div class="skill-line">Customer Engagement Strategy</div>
+    <div class="skill-line">Visual Storytelling</div>
+    <div class="skill-line">Trend Research & Content Ideation</div>
+    <div class="skill-line">Brand Analysis & Competitor Research</div>
+  </div>
+
+  <div style="margin-top:12px;">
+    <strong>Tools:</strong>
+    <span style="color:#555;"> Canva · VN Editor · InShot · CapCut · Instagram Business Tools · Pinterest Analytics</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     EDUCATION
+══════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title">Education</div>
+
+  <div class="edu-item">
+    <div class="edu-left">
+      <div class="edu-deg" style="color:#6E1728;">MBA — Human Resource Management <span style="font-size:9pt;color:#888;">(In Progress)</span></div>
+      <div class="edu-school">Symbiosis Institute of Business Management (SIBM) · Pune</div>
+    </div>
+    <div class="edu-year">2026 – 2028</div>
+  </div>
+  <div class="edu-item">
+    <div class="edu-left">
+      <div class="edu-deg">Bachelor of Commerce (BCom)</div>
+      <div class="edu-school">Christ Church P.G. College · Kanpur, Uttar Pradesh</div>
+    </div>
+    <div class="edu-year">2023 – 2026</div>
+  </div>
+  <div class="edu-item">
+    <div class="edu-left">
+      <div class="edu-deg">Senior Secondary (Class 12)</div>
+      <div class="edu-school">Delhi Public School, Kalyanpur · Kanpur</div>
+    </div>
+    <div class="edu-year">2021 – 2023</div>
+  </div>
+  <div style="margin-top:10px;font-size:9.5pt;color:#777;font-style:italic;">
+    Additional Training: Pre-MBA Summer Program · IIM Udaipur
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     MEMBERSHIPS & ADDITIONAL
+══════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title">Memberships & Additional</div>
+  <ul class="exp-bullets">
+    <li><strong>Kanpur Creators Club</strong> — Active Member; network of content creators focused on collaborative brand growth.</li>
+    <li>Fluent in English and Hindi.</li>
+    <li>Passionate about fashion, aesthetic content, brand authenticity, and creator economy trends.</li>
+  </ul>
+</div>
+
+</body>
+</html>

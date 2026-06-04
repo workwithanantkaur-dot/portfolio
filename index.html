@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anant Kaur — Marketing Professional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ─── TOKENS ─── */
+:root{
+  --cream:   #F2ECD9;
+  --cream2:  #E8DFC8;
+  --burg:    #6E1728;
+  --burg2:   #4F0F1C;
+  --dark:    #130508;
+  --text:    #1C0B10;
+  --muted:   #6B4550;
+  --white:   #FFFFFF;
+  --gold:    #C49A3C;
+}
+
+/* ─── RESET ─── */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden;cursor:none;}
+
+/* ─── CURSOR ─── */
+.cur{width:10px;height:10px;background:var(--burg);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transition:transform .12s,background .2s;}
+.cur-ring{width:36px;height:36px;border:1.5px solid rgba(110,23,40,.45);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transition:border-color .3s;}
+
+/* ─── LENIS SMOOTH SCROLL (use native) ─── */
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:22px 6%;
+  display:flex;justify-content:space-between;align-items:center;
+  transition:all .35s;
+}
+nav.scrolled{
+  background:rgba(242,236,217,.93);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(110,23,40,.12);
+  padding:14px 6%;
+}
+.nav-logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;font-style:italic;
+  color:var(--burg);letter-spacing:.5px;
+}
+.nav-links{display:flex;gap:30px;list-style:none;align-items:center;}
+.nav-links a{
+  font-size:.78rem;font-weight:500;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  transition:color .25s;
+}
+.nav-links a:hover{color:var(--burg);}
+.nav-resume{
+  padding:10px 24px;
+  background:var(--burg);color:var(--white);
+  border-radius:50px;font-size:.75rem;
+  font-weight:600;letter-spacing:1.5px;
+  text-transform:uppercase;text-decoration:none;
+  transition:all .3s;
+}
+.nav-resume:hover{background:var(--burg2);transform:translateY(-2px);}
+
+/* ─── HERO ─── */
+#hero{
+  min-height:100vh;
+  background:var(--cream);
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  padding:120px 6% 60px;
+  position:relative;overflow:hidden;
+}
+.hero-left{align-self:start;padding-top:40px;}
+.hero-tag{
+  font-size:.7rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--burg);margin-bottom:30px;
+  display:flex;align-items:center;gap:10px;
+}
+.hero-tag::before{content:'';width:30px;height:1px;background:var(--burg);}
+.hero-hi{
+  font-family:'Playfair Display',serif;
+  font-style:italic;font-weight:400;
+  font-size:clamp(2.5rem,5vw,4.5rem);
+  color:var(--text);line-height:1;margin-bottom:-10px;
+}
+.hero-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(5rem,13vw,13rem);
+  line-height:.9;color:var(--burg);
+  letter-spacing:-2px;
+  animation:slideUp .8s cubic-bezier(.16,1,.3,1) both;
+}
+.hero-name-line2{color:var(--text);}
+
+.hero-stat-chips{
+  display:flex;flex-direction:column;gap:10px;
+  margin-top:30px;
+}
+.chip{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--burg);color:var(--white);
+  padding:8px 18px;border-radius:50px;
+  font-size:.75rem;font-weight:500;letter-spacing:.5px;
+  width:fit-content;
+  transform:translateX(-20px);opacity:0;
+  animation:chipIn .6s cubic-bezier(.16,1,.3,1) forwards;
+}
+.chip:nth-child(1){animation-delay:.6s;}
+.chip:nth-child(2){animation-delay:.75s;}
+.chip:nth-child(3){animation-delay:.9s;}
+.chip-num{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;font-weight:700;}
+
+.hero-center{
+  display:flex;flex-direction:column;align-items:center;
+  padding:0 20px;
+}
+.hero-photo-frame{
+  width:280px;height:380px;
+  position:relative;
+}
+.hero-photo-border{
+  width:100%;height:100%;
+  border:3px solid var(--burg);
+  border-radius:4px;
+  overflow:hidden;
+  position:relative;
+}
+.hero-photo-border::before{
+  content:'';position:absolute;
+  inset:8px;border:1px solid rgba(110,23,40,.3);
+  z-index:1;pointer-events:none;
+}
+.hero-photo-border img,
+.hero-photo-placeholder{
+  width:100%;height:100%;object-fit:cover;
+}
+.hero-photo-placeholder{
+  background:linear-gradient(145deg,var(--cream2),var(--burg) 200%);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;
+  font-size:5rem;font-style:italic;color:var(--white);opacity:.7;
+}
+.hero-scroll{
+  margin-top:20px;
+  font-size:.7rem;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:8px;
+}
+.scroll-line-v{
+  width:1px;height:40px;
+  background:linear-gradient(var(--burg),transparent);
+  animation:scrollPulse 1.8s ease-in-out infinite;
+}
+
+.hero-right{
+  text-align:right;padding-top:80px;
+  display:flex;flex-direction:column;align-items:flex-end;
+  gap:20px;
+}
+.hero-desc{
+  max-width:260px;
+  font-size:.88rem;color:var(--muted);
+  line-height:1.8;font-weight:300;
+}
+.hero-role-stack{display:flex;flex-direction:column;gap:4px;align-items:flex-end;}
+.hero-role-item{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.8rem;color:var(--burg);
+  letter-spacing:1px;line-height:1;
+}
+.hero-role-item.muted{color:var(--muted);font-size:1.2rem;}
+.btn-hero{
+  padding:14px 36px;
+  background:var(--burg);color:var(--white);
+  border-radius:50px;font-size:.8rem;font-weight:600;
+  letter-spacing:1.5px;text-transform:uppercase;
+  text-decoration:none;transition:all .3s;
+  margin-top:10px;
+}
+.btn-hero:hover{background:var(--burg2);transform:translateY(-3px);box-shadow:0 10px 30px rgba(110,23,40,.3);}
+
+/* ─── MARQUEE ─── */
+.marquee-section{
+  background:var(--burg);
+  padding:18px 0;overflow:hidden;
+}
+.marquee-track{
+  display:flex;gap:0;
+  animation:marquee 22s linear infinite;
+  width:max-content;
+}
+.marquee-track:hover{animation-play-state:paused;}
+.marquee-item{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.4rem;letter-spacing:3px;
+  color:var(--white);padding:0 30px;
+  white-space:nowrap;opacity:.9;
+}
+.marquee-dot{color:var(--gold);padding:0 5px;}
+
+/* ─── ABOUT ─── */
+#about{
+  background:var(--cream);
+  padding:120px 6%;
+}
+.about-eyebrow{
+  font-size:.72rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--burg);margin-bottom:50px;
+  display:flex;align-items:center;gap:12px;
+}
+.about-eyebrow::after{content:'';flex:1;height:1px;background:rgba(110,23,40,.2);}
+.about-big{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.5rem,5vw,5rem);
+  font-weight:900;line-height:1.05;
+  color:var(--text);margin-bottom:70px;
+}
+.about-big em{font-style:italic;color:var(--burg);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.about-photo-col{position:relative;}
+.about-photo-main{
+  width:100%;aspect-ratio:3/4;
+  object-fit:cover;border-radius:4px;
+  filter:grayscale(10%);
+}
+.about-photo-main-placeholder{
+  width:100%;aspect-ratio:3/4;
+  background:linear-gradient(135deg,var(--cream2),var(--burg) 200%);
+  border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;
+  font-size:3rem;font-style:italic;color:rgba(255,255,255,.5);
+}
+.about-badge{
+  position:absolute;bottom:-20px;right:-20px;
+  background:var(--burg);color:var(--white);
+  padding:20px;border-radius:4px;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1rem;letter-spacing:2px;
+  text-align:center;line-height:1.3;
+}
+.about-text-col{}
+.about-hello{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-size:1.8rem;
+  color:var(--burg);margin-bottom:20px;
+}
+.about-body{
+  font-size:.95rem;color:var(--muted);
+  line-height:1.95;margin-bottom:28px;
+  font-weight:300;
+}
+.about-body strong{color:var(--burg);font-weight:600;}
+.about-facts{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;}
+.fact-tag{
+  padding:8px 18px;
+  border:1px solid rgba(110,23,40,.3);
+  border-radius:50px;font-size:.78rem;
+  color:var(--burg);letter-spacing:.5px;
+  transition:all .3s;
+}
+.fact-tag:hover{background:var(--burg);color:var(--white);}
+
+/* ─── NUMBERS ─── */
+#numbers{
+  background:var(--burg);
+  padding:100px 6%;overflow:hidden;
+  position:relative;
+}
+#numbers::before{
+  content:'IMPACT';
+  position:absolute;right:-40px;top:50%;transform:translateY(-50%);
+  font-family:'Bebas Neue',sans-serif;
+  font-size:22rem;color:rgba(255,255,255,.04);
+  white-space:nowrap;pointer-events:none;
+  line-height:1;
+}
+.numbers-eyebrow{
+  font-size:.72rem;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,.5);margin-bottom:16px;
+}
+.numbers-title{
+  font-family:'Playfair Display',serif;
+  font-style:italic;font-size:clamp(2rem,4vw,3.5rem);
+  color:var(--white);margin-bottom:70px;
+  font-weight:400;
+}
+.numbers-title strong{font-style:normal;font-weight:900;}
+.nums-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:0;
+}
+.num-item{
+  padding:40px 30px;
+  border-right:1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  transition:background .3s;
+}
+.num-item:hover{background:rgba(255,255,255,.05);}
+.num-val{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3rem,6vw,5.5rem);
+  color:var(--white);line-height:1;
+  margin-bottom:8px;letter-spacing:-1px;
+}
+.num-val .highlight{color:var(--gold);}
+.num-label{font-size:.78rem;color:rgba(255,255,255,.55);line-height:1.5;letter-spacing:.5px;}
+.num-source{font-size:.68rem;color:rgba(255,255,255,.3);margin-top:4px;font-style:italic;}
+
+/* ─── VIDEO SECTION ─── */
+#showreel{
+  background:var(--dark);
+  padding:100px 6%;
+}
+.reel-eyebrow{
+  font-size:.72rem;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,.4);margin-bottom:16px;
+}
+.reel-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(4rem,9vw,9rem);
+  color:var(--white);line-height:.9;
+  margin-bottom:16px;
+}
+.reel-sub{
+  font-size:.88rem;color:rgba(255,255,255,.4);
+  margin-bottom:60px;font-weight:300;
+}
+.reel-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.reel-card{position:relative;border-radius:8px;overflow:hidden;background:rgba(255,255,255,.04);}
+.reel-card video{
+  width:100%;aspect-ratio:9/16;
+  object-fit:cover;display:block;
+}
+.reel-overlay{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:24px;
+  background:linear-gradient(transparent,rgba(0,0,0,.8));
+}
+.reel-stat-row{display:flex;gap:16px;flex-wrap:wrap;}
+.reel-stat{
+  display:flex;align-items:center;gap:5px;
+  font-size:.78rem;color:rgba(255,255,255,.8);
+}
+.reel-stat i{color:var(--gold);font-size:.7rem;}
+.reel-play-badge{
+  position:absolute;top:16px;left:16px;
+  background:var(--burg);color:var(--white);
+  padding:6px 14px;border-radius:50px;
+  font-size:.7rem;font-weight:600;letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+
+/* ─── WHY HIRE ME ─── */
+#why{
+  background:var(--cream);
+  padding:120px 6%;
+  position:relative;overflow:hidden;
+}
+#why::before{
+  content:'WHY';
+  position:absolute;top:-40px;left:-20px;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:28rem;color:rgba(110,23,40,.04);
+  pointer-events:none;line-height:1;
+}
+.why-eyebrow{
+  font-size:.72rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--burg);margin-bottom:16px;
+}
+.why-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.5rem,5vw,5rem);
+  font-weight:900;line-height:1.05;
+  color:var(--text);margin-bottom:80px;
+}
+.why-title em{font-style:italic;color:var(--burg);}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.why-item{
+  padding:50px;
+  border:1px solid rgba(110,23,40,.1);
+  position:relative;overflow:hidden;
+  transition:background .4s;
+}
+.why-item:hover{background:var(--burg);}
+.why-item:hover .why-num,
+.why-item:hover .why-heading,
+.why-item:hover .why-body{color:var(--white);}
+.why-item:hover .why-line{background:rgba(255,255,255,.3);}
+.why-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:5rem;color:rgba(110,23,40,.08);
+  line-height:1;margin-bottom:-20px;
+  transition:color .4s;
+}
+.why-heading{
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;font-weight:700;
+  color:var(--text);margin-bottom:10px;
+  transition:color .4s;
+}
+.why-heading em{font-style:italic;font-weight:400;}
+.why-line{
+  width:40px;height:1px;
+  background:var(--burg);
+  margin:12px 0;transition:background .4s;
+}
+.why-body{
+  font-size:.88rem;color:var(--muted);
+  line-height:1.8;font-weight:300;
+  transition:color .4s;
+}
+
+/* ─── EXPERIENCE ─── */
+#experience{background:var(--burg2);padding:120px 6%;}
+.exp-eyebrow{font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:50px;}
+.exp-list{display:flex;flex-direction:column;gap:0;}
+.exp-row{
+  display:grid;grid-template-columns:200px 1fr 200px;
+  align-items:start;gap:40px;
+  padding:50px 0;
+  border-top:1px solid rgba(255,255,255,.08);
+  transition:all .3s;
+}
+.exp-row:hover{padding-left:20px;}
+.exp-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:5rem;color:rgba(255,255,255,.08);
+  line-height:1;padding-top:5px;
+}
+.exp-content{}
+.exp-brand{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2rem,4vw,3.5rem);
+  color:var(--white);letter-spacing:1px;
+  line-height:1;margin-bottom:6px;
+}
+.exp-role{
+  font-size:.78rem;color:rgba(255,255,255,.45);
+  letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:16px;
+}
+.exp-desc{
+  font-size:.88rem;color:rgba(255,255,255,.65);
+  line-height:1.8;font-weight:300;max-width:500px;
+}
+.exp-desc ul{list-style:none;padding:0;}
+.exp-desc ul li{padding:3px 0;}
+.exp-desc ul li::before{content:'—  ';color:var(--gold);}
+.exp-meta{text-align:right;padding-top:10px;}
+.exp-tag{
+  display:inline-block;
+  border:1px solid rgba(255,255,255,.2);
+  color:rgba(255,255,255,.6);
+  padding:6px 14px;border-radius:50px;
+  font-size:.7rem;letter-spacing:1px;
+  text-transform:uppercase;margin-bottom:8px;
+}
+
+/* ─── CERTIFICATIONS ─── */
+#certifications{background:var(--cream);padding:120px 6%;}
+.cert-eyebrow{font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--burg);margin-bottom:16px;}
+.cert-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.5rem,5vw,4.5rem);
+  font-weight:900;color:var(--text);
+  margin-bottom:70px;line-height:1.1;
+}
+.cert-title em{font-style:italic;color:var(--burg);}
+.cert-list{display:flex;flex-direction:column;}
+.cert-row{
+  display:grid;
+  grid-template-columns:60px 1fr auto;
+  align-items:center;gap:30px;
+  padding:28px 0;
+  border-bottom:1px solid rgba(110,23,40,.1);
+  transition:all .3s;cursor:pointer;
+}
+.cert-row:hover{padding-left:16px;}
+.cert-row:hover .cert-arrow{opacity:1;transform:translateX(0);}
+.cert-idx{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2rem;color:rgba(110,23,40,.15);
+}
+.cert-info{}
+.cert-n{font-size:1rem;font-weight:600;color:var(--text);margin-bottom:3px;}
+.cert-by{font-size:.78rem;color:var(--muted);letter-spacing:.5px;}
+.cert-arrow{
+  font-size:.85rem;color:var(--burg);
+  opacity:0;transform:translateX(-8px);
+  transition:all .3s;
+}
+.cert-row a{text-decoration:none;}
+
+/* ─── SKILLS ─── */
+#skills{background:var(--burg);padding:100px 6%;}
+.skills-eyebrow{font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:50px;}
+.skills-cloud{
+  display:flex;flex-wrap:wrap;
+  gap:16px;align-items:center;
+}
+.sk{
+  font-family:'Playfair Display',serif;
+  color:var(--white);
+  transition:all .3s;cursor:default;
+  line-height:1.2;
+}
+.sk:hover{color:var(--gold);transform:scale(1.05);}
+.sk.lg{font-size:clamp(2rem,4vw,3.5rem);font-style:italic;font-weight:700;}
+.sk.md{font-size:clamp(1.2rem,2.5vw,2rem);font-weight:400;}
+.sk.sm{font-size:clamp(.9rem,1.5vw,1.3rem);font-weight:300;opacity:.7;}
+.sk-sep{color:var(--gold);opacity:.4;font-size:1.5rem;align-self:center;}
+.tools-strip{
+  margin-top:60px;
+  padding-top:40px;
+  border-top:1px solid rgba(255,255,255,.08);
+  display:flex;flex-wrap:wrap;gap:16px;
+}
+.tool-tag{
+  display:flex;align-items:center;gap:8px;
+  padding:12px 22px;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:50px;
+  font-size:.82rem;color:rgba(255,255,255,.7);
+  transition:all .3s;
+}
+.tool-tag:hover{border-color:var(--white);color:var(--white);}
+.tool-tag-icon{font-size:1.1rem;}
+
+/* ─── EDUCATION ─── */
+#education{background:var(--cream2);padding:100px 6%;}
+.edu-eyebrow{font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--burg);margin-bottom:16px;}
+.edu-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.5rem,5vw,4rem);
+  font-weight:900;color:var(--text);
+  margin-bottom:70px;
+}
+.edu-title em{font-style:italic;color:var(--burg);}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+.edu-card{
+  padding:40px;
+  background:var(--white);
+  border-radius:4px;
+  border-left:4px solid var(--burg);
+  transition:all .3s;
+}
+.edu-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(110,23,40,.12);}
+.edu-yr{font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--burg);margin-bottom:12px;}
+.edu-deg{
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;font-weight:700;
+  color:var(--text);margin-bottom:6px;
+  line-height:1.2;
+}
+.edu-school{font-size:.88rem;color:var(--muted);}
+
+/* ─── MARQUEE 2 ─── */
+.marquee2{
+  background:var(--cream2);
+  padding:24px 0;overflow:hidden;
+  border-top:1px solid rgba(110,23,40,.1);
+  border-bottom:1px solid rgba(110,23,40,.1);
+}
+.marquee2 .marquee-track{animation-direction:reverse;animation-duration:28s;}
+.marquee2 .marquee-item{color:var(--burg);font-size:1.2rem;}
+.marquee2 .marquee-dot{color:var(--gold);}
+
+/* ─── LET'S WORK ─── */
+#contact{
+  background:var(--dark);
+  padding:0;
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+}
+.contact-hero{
+  flex:1;
+  display:flex;align-items:center;justify-content:center;
+  padding:120px 6% 60px;
+  position:relative;
+  text-align:center;
+}
+.contact-bg-text{
+  position:absolute;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:28vw;color:rgba(255,255,255,.03);
+  pointer-events:none;line-height:.85;
+  top:50%;transform:translateY(-50%);
+  white-space:nowrap;
+}
+.contact-inner{position:relative;z-index:1;}
+.contact-pre{
+  font-size:.72rem;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,.35);margin-bottom:30px;
+}
+.contact-big{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(4rem,10vw,12rem);
+  color:var(--white);line-height:.9;
+  margin-bottom:20px;
+}
+.contact-big span{color:var(--burg);}
+.contact-sub{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-size:1.4rem;
+  color:rgba(255,255,255,.45);margin-bottom:50px;
+}
+.contact-email-link{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.2rem,2.5vw,2rem);
+  color:var(--white);text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.2);
+  padding-bottom:4px;transition:all .3s;
+  font-style:italic;
+}
+.contact-email-link:hover{color:var(--gold);border-color:var(--gold);}
+.social-row{
+  display:flex;justify-content:center;gap:16px;
+  margin:40px 0;
+}
+.social-btn{
+  width:46px;height:46px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.15);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.6);text-decoration:none;font-size:1rem;
+  transition:all .3s;
+}
+.social-btn:hover{background:var(--burg);border-color:var(--burg);color:var(--white);transform:translateY(-4px);}
+.resume-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:16px 40px;
+  background:var(--gold);color:var(--dark);
+  border-radius:50px;font-size:.85rem;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  text-decoration:none;transition:all .3s;margin-top:20px;
+}
+.resume-cta:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(196,154,60,.4);}
+
+/* ─── FOOTER ─── */
+footer{
+  background:var(--dark);
+  border-top:1px solid rgba(255,255,255,.06);
+  padding:30px 6%;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:.75rem;color:rgba(255,255,255,.2);
+  letter-spacing:.5px;
+}
+footer .accent{color:var(--burg);}
+
+/* ─── LIGHTBOX ─── */
+.lightbox{
+  display:none;position:fixed;inset:0;z-index:9990;
+  background:rgba(0,0,0,.92);
+  align-items:center;justify-content:center;padding:30px;
+}
+.lightbox.open{display:flex;}
+.lightbox img{
+  max-width:90vw;max-height:88vh;
+  border-radius:4px;animation:scaleIn .3s ease;
+}
+.lb-close{
+  position:fixed;top:22px;right:28px;
+  font-size:1.8rem;color:rgba(255,255,255,.7);
+  cursor:pointer;background:none;border:none;
+  transition:color .2s;z-index:9991;
+}
+.lb-close:hover{color:var(--white);}
+
+/* ─── ANIMATIONS ─── */
+@keyframes slideUp{
+  from{opacity:0;transform:translateY(60px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes chipIn{
+  to{transform:translateX(0);opacity:1;}
+}
+@keyframes marquee{
+  0%{transform:translateX(0);}
+  100%{transform:translateX(-50%);}
+}
+@keyframes scrollPulse{
+  0%,100%{opacity:.3;transform:scaleY(1);}
+  50%{opacity:1;transform:scaleY(1.2);}
+}
+@keyframes scaleIn{
+  from{opacity:0;transform:scale(.9);}
+  to{opacity:1;transform:scale(1);}
+}
+
+/* ─── AOS overrides ─── */
+[data-aos]{opacity:0;transition-property:opacity,transform;}
+[data-aos].aos-animate{opacity:1;}
+[data-aos="fade-up"]{transform:translateY(40px);}
+[data-aos="fade-up"].aos-animate{transform:translateY(0);}
+[data-aos="fade-right"]{transform:translateX(-30px);}
+[data-aos="fade-right"].aos-animate{transform:translateX(0);}
+[data-aos="fade-left"]{transform:translateX(30px);}
+[data-aos="fade-left"].aos-animate{transform:translateX(0);}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1100px){
+  #hero{grid-template-columns:1fr;padding-top:100px;}
+  .hero-center{display:none;}
+  .hero-right{align-items:flex-start;text-align:left;}
+  .exp-row{grid-template-columns:1fr;gap:20px;}
+  .exp-meta{text-align:left;}
+  .why-grid{grid-template-columns:1fr;}
+  .about-grid{grid-template-columns:1fr;}
+  .edu-grid{grid-template-columns:1fr;}
+  .reel-grid{grid-template-columns:1fr;}
+}
+@media(max-width:768px){
+  nav{padding:16px 5%;}
+  .nav-links{display:none;}
+  section,#about,#numbers,#showreel,#why,#experience,#certifications,#skills,#education,#contact{padding-left:5%;padding-right:5%;}
+  .contact-hero{padding:100px 5% 60px;}
+  footer{flex-direction:column;gap:10px;text-align:center;}
+  .contact-big{font-size:clamp(3.5rem,15vw,10rem);}
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="curRing"></div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lb">
+  <button class="lb-close" id="lbClose">&#x2715;</button>
+  <img id="lbImg" src="" alt="">
+</div>
+
+<!-- ─── NAV ─── -->
+<nav id="nav">
+  <div class="nav-logo">Anant Kaur</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#numbers">Impact</a></li>
+    <li><a href="#why">Why Me</a></li>
+    <li><a href="#experience">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="resume.html" target="_blank" class="nav-resume">Download CV</a>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Marketing Professional</div>
+    <p class="hero-hi">Hi, <em>I'm</em></p>
+    <h1 class="hero-name">ANANT<br><span class="hero-name-line2">KAUR.</span></h1>
+    <div class="hero-stat-chips">
+      <div class="chip"><span class="chip-num">8.7M+</span> Reach in 3 Months</div>
+      <div class="chip"><span class="chip-num">10K+</span> Instagram Followers</div>
+      <div class="chip"><span class="chip-num">68K+</span> Views on a Single Reel</div>
+    </div>
+  </div>
+
+  <div class="hero-center">
+    <div class="hero-photo-frame">
+      <div class="hero-photo-border">
+        <!-- Replace with: <img src="your-photo.jpg" alt="Anant Kaur"> -->
+        <div class="hero-photo-placeholder">AK</div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line-v"></div>
+      Scroll
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-role-stack">
+      <div class="hero-role-item">CONTENT</div>
+      <div class="hero-role-item">CREATOR</div>
+      <div class="hero-role-item muted">& Strategist</div>
+    </div>
+    <p class="hero-desc">
+      Building brands that people stop scrolling for.
+      MBA (HRM) student at Symbiosis Pune, AKS founder,
+      and Kanpur Creators Club member.
+    </p>
+    <a href="#why" class="btn-hero">Why Hire Me →</a>
+    <a href="resume.html" target="_blank" class="btn-hero" style="background:transparent;border:1px solid var(--burg);color:var(--burg);margin-top:0;">Download Resume</a>
+  </div>
+</section>
+
+<!-- ─── MARQUEE ─── -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item">CONTENT CREATION</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">BRAND STRATEGY</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">DIGITAL MARKETING</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">COMMUNITY BUILDING</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">E-COMMERCE</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">DATA STORYTELLING</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">PERSONAL BRANDING</span><span class="marquee-dot">✦</span>
+    <!-- repeat for seamless loop -->
+    <span class="marquee-item">CONTENT CREATION</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">BRAND STRATEGY</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">DIGITAL MARKETING</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">COMMUNITY BUILDING</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">E-COMMERCE</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">DATA STORYTELLING</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">PERSONAL BRANDING</span><span class="marquee-dot">✦</span>
+  </div>
+</div>
+
+<!-- ─── ABOUT ─── -->
+<section id="about">
+  <div class="about-eyebrow" data-aos="fade-up">Know The Marketer</div>
+  <h2 class="about-big" data-aos="fade-up" data-aos-delay="100">
+    I Don't Just <em>Post</em>—<br>I Build <em>Presence.</em>
+  </h2>
+  <div class="about-grid">
+    <div class="about-photo-col" data-aos="fade-right">
+      <!-- Replace with real photo once available -->
+      <div class="about-photo-main-placeholder">AK</div>
+      <div class="about-badge">
+        KANPUR<br>CREATORS<br>CLUB
+      </div>
+    </div>
+    <div class="about-text-col" data-aos="fade-left" data-aos-delay="150">
+      <div class="about-hello">Hey, I'm Anant —</div>
+      <p class="about-body">
+        A <strong>BCom student at Christ Church P.G. College</strong> who turned passion into proof.
+        I built a personal brand from zero to <strong>8.7 million reach in 3 months</strong>,
+        founded <strong>AKS</strong> (my own candle brand), modeled for real campaigns,
+        raised funds as a <strong>Muskurahat Foundation</strong> intern, and completed a
+        <strong>Pre-MBA program at IIM Udaipur</strong>.
+      </p>
+      <p class="about-body">
+        I understand marketing from <strong>both sides</strong> — as a creator who has built audiences
+        and as a strategist who has managed brand identity. My work doesn't live in decks;
+        it lives in the metrics, the engagement, and the communities I've built.
+      </p>
+      <p class="about-body">
+        If you're looking for someone who treats every piece of content as a <strong>business decision</strong> — that's me.
+      </p>
+      <div class="about-facts">
+        <span class="fact-tag">🎓 IIM Udaipur Pre-MBA</span>
+        <span class="fact-tag">🏫 MBA HRM · Symbiosis Pune</span>
+        <span class="fact-tag">🕯️ AKS Founder</span>
+        <span class="fact-tag">✨ Kanpur Creators Club</span>
+        <span class="fact-tag">📊 Google Certified</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── NUMBERS ─── -->
+<section id="numbers">
+  <div class="numbers-eyebrow" data-aos="fade-up">My Impact in Numbers</div>
+  <h2 class="numbers-title" data-aos="fade-up" data-aos-delay="80">
+    <strong>Real Data.</strong><br><em>Real Results.</em>
+  </h2>
+  <div class="nums-grid">
+    <div class="num-item" data-aos="fade-up" data-aos-delay="0">
+      <div class="num-val"><span class="counter" data-target="68852">0</span></div>
+      <div class="num-label">Views on a single reel</div>
+      <div class="num-source">Instagram · Glow Ritual Reel</div>
+    </div>
+    <div class="num-item" data-aos="fade-up" data-aos-delay="60">
+      <div class="num-val"><span class="counter" data-target="50190">0</span></div>
+      <div class="num-label">Accounts reached (1 reel)</div>
+      <div class="num-source">Instagram · April 2026</div>
+    </div>
+    <div class="num-item" data-aos="fade-up" data-aos-delay="120">
+      <div class="num-val"><span class="counter" data-target="8700">0</span><span class="highlight">K+</span></div>
+      <div class="num-label">Total reach in 3 months</div>
+      <div class="num-source">Instagram · Mar–Jun 2026</div>
+    </div>
+    <div class="num-item" data-aos="fade-up" data-aos-delay="180">
+      <div class="num-val"><span class="counter" data-target="10">0</span><span class="highlight">K+</span></div>
+      <div class="num-label">Instagram followers</div>
+      <div class="num-source">Instagram · June 2026</div>
+    </div>
+    <div class="num-item" data-aos="fade-up" data-aos-delay="240">
+      <div class="num-val"><span class="counter" data-target="85">0</span><span class="highlight">K+</span></div>
+      <div class="num-label">Monthly views</div>
+      <div class="num-source">Pinterest</div>
+    </div>
+    <div class="num-item" data-aos="fade-up" data-aos-delay="300">
+      <div class="num-val"><span class="counter" data-target="42">0</span><span class="highlight">K+</span></div>
+      <div class="num-label">Views in 30 days</div>
+      <div class="num-source">YouTube</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SHOWREEL ─── -->
+<section id="showreel">
+  <div class="reel-eyebrow" data-aos="fade-up">Content That Converts</div>
+  <h2 class="reel-title" data-aos="fade-up" data-aos-delay="80">
+    SEE<br>MY<br>WORK.
+  </h2>
+  <p class="reel-sub" data-aos="fade-up" data-aos-delay="160">Real content. Real reach. Real results.</p>
+  <div class="reel-grid">
+    <div class="reel-card" data-aos="fade-right">
+      <div class="reel-play-badge">Instagram Reel</div>
+      <video autoplay muted loop playsinline>
+        <source src="WhatsApp Video 2026-05-24 at 4.26.45 PM.mp4" type="video/mp4">
+      </video>
+      <div class="reel-overlay">
+        <div class="reel-stat-row">
+          <div class="reel-stat"><i class="fas fa-eye"></i> 68,852 views</div>
+          <div class="reel-stat"><i class="fas fa-heart"></i> 1.4K likes</div>
+          <div class="reel-stat"><i class="fas fa-share"></i> 1.6K shares</div>
+          <div class="reel-stat"><i class="fas fa-bookmark"></i> 1.7K saves</div>
+        </div>
+      </div>
+    </div>
+    <div class="reel-card" data-aos="fade-left" data-aos-delay="100">
+      <div class="reel-play-badge">Instagram Reel</div>
+      <video autoplay muted loop playsinline>
+        <source src="WhatsApp Video 2026-05-24 at 4.06.11 PM.mp4" type="video/mp4">
+      </video>
+      <div class="reel-overlay">
+        <div class="reel-stat-row">
+          <div class="reel-stat"><i class="fas fa-eye"></i> 11,025 views</div>
+          <div class="reel-stat"><i class="fas fa-heart"></i> 210 likes</div>
+          <div class="reel-stat"><i class="fas fa-share"></i> 89 sends</div>
+          <div class="reel-stat"><i class="fas fa-comment"></i> 48 comments</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHY HIRE ME ─── -->
+<section id="why">
+  <div class="why-eyebrow" data-aos="fade-up">The Case For Anant</div>
+  <h2 class="why-title" data-aos="fade-up" data-aos-delay="80">
+    Why You Should <em>Hire</em><br>Me <em>Right Now.</em>
+  </h2>
+  <div class="why-grid">
+    <div class="why-item" data-aos="fade-up" data-aos-delay="0">
+      <div class="why-num">01</div>
+      <div class="why-heading">I Create Content That <em>Actually Works</em></div>
+      <div class="why-line"></div>
+      <div class="why-body">
+        8.7 million reach in 3 months. 10K+ followers. 68K views on a single reel.
+        366 new follows from one video. That's not luck —
+        that's understanding what an audience wants before they know they want it.
+        I create content with strategy, data, and storytelling working together.
+      </div>
+    </div>
+    <div class="why-item" data-aos="fade-up" data-aos-delay="80">
+      <div class="why-num">02</div>
+      <div class="why-heading">I Think Like a <em>Brand Strategist</em></div>
+      <div class="why-line"></div>
+      <div class="why-body">
+        I've been on both sides — as a model for Kapai Cafe and The Bruts, I lived inside a brand's
+        vision. As the founder of AKS, I was the brand. I understand brand identity at a level
+        most candidates only read about in textbooks.
+      </div>
+    </div>
+    <div class="why-item" data-aos="fade-up" data-aos-delay="160">
+      <div class="why-num">03</div>
+      <div class="why-heading">I'm Academically <em>Sharp</em></div>
+      <div class="why-line"></div>
+      <div class="why-body">
+        Google-certified in Digital Marketing & E-Commerce. Pre-MBA program at IIM Udaipur.
+        P&G Brand Campus Champion (Unstop). Forage Branding graduate.
+        Fundraising intern at Muskurahat Foundation. Now pursuing MBA in HRM at Symbiosis Pune.
+        I bring structured marketing frameworks — not just vibes.
+      </div>
+    </div>
+    <div class="why-item" data-aos="fade-up" data-aos-delay="240">
+      <div class="why-num">04</div>
+      <div class="why-heading">I <em>Execute</em> — Not Just Plan</div>
+      <div class="why-line"></div>
+      <div class="why-body">
+        8.7 million reach. 10K followers. 85K Pinterest views. A real candle business.
+        Real fundraising. Real campaigns. Everything I've built has been from scratch,
+        with zero budget and maximum creativity. Imagine what I can do with resources.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EXPERIENCE ─── -->
+<section id="experience">
+  <div class="exp-eyebrow" data-aos="fade-up">Professional Experience</div>
+  <div class="exp-list">
+
+    <div class="exp-row" data-aos="fade-up" data-aos-delay="0">
+      <div class="exp-num">01</div>
+      <div class="exp-content">
+        <div class="exp-brand">KAPAI CAFE</div>
+        <div class="exp-role">Brand Campaign Model · Diwali</div>
+        <div class="exp-desc">
+          <ul>
+            <li>Modeled for Kapai Cafe's Diwali brand campaign</li>
+            <li>Brought the brand's festive vision to life through on-brand visual storytelling</li>
+            <li>Collaborated with the creative team on campaign direction and aesthetics</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-meta">
+        <span class="exp-tag">Brand Campaigns</span><br>
+        <span class="exp-tag">Visual Storytelling</span>
+      </div>
+    </div>
+
+    <div class="exp-row" data-aos="fade-up" data-aos-delay="60">
+      <div class="exp-num">02</div>
+      <div class="exp-content">
+        <div class="exp-brand">THE BRUTS</div>
+        <div class="exp-role">Fashion Model · Clothing Brand</div>
+        <div class="exp-desc">
+          <ul>
+            <li>Represented The Bruts thrift clothing brand as a fashion model</li>
+            <li>Contributed to the brand's visual identity and aesthetic direction</li>
+            <li>Created content that communicated the brand's positioning to target audiences</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-meta">
+        <span class="exp-tag">Fashion</span><br>
+        <span class="exp-tag">Brand Identity</span>
+      </div>
+    </div>
+
+    <div class="exp-row" data-aos="fade-up" data-aos-delay="120">
+      <div class="exp-num">03</div>
+      <div class="exp-content">
+        <div class="exp-brand">AKS</div>
+        <div class="exp-role">Founder & Creative Director · Candle Brand</div>
+        <div class="exp-desc">
+          <ul>
+            <li>Conceptualised, launched and managed a handcrafted candle brand end-to-end</li>
+            <li>Handled all branding, product design, e-commerce, and social media strategy</li>
+            <li>Built customer engagement and community around the brand organically</li>
+            <li>Managed full brand lifecycle from product craft to customer delivery</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-meta">
+        <span class="exp-tag">Entrepreneurship</span><br>
+        <span class="exp-tag">E-Commerce</span><br>
+        <span class="exp-tag">Branding</span>
+      </div>
+    </div>
+
+    <div class="exp-row" data-aos="fade-up" data-aos-delay="180">
+      <div class="exp-num">04</div>
+      <div class="exp-content">
+        <div class="exp-brand">PERSONAL BRAND</div>
+        <div class="exp-role">Content Creator & Strategist · Since March 2026</div>
+        <div class="exp-desc">
+          <ul>
+            <li>Grew personal brand to <strong style="color:var(--gold);">8.7 million reach</strong> and 10,000+ followers in just 3 months — entirely organic</li>
+            <li>A single reel achieved 68,852 views, reached 50,190 accounts, and gained 366 new followers</li>
+            <li>Active across Instagram, YouTube (42K+ views/month), Pinterest (85K monthly views) & Snapchat (7K+ followers)</li>
+            <li>Scripted, filmed, edited and published content independently using CapCut, InShot, VN</li>
+            <li>Analysed platform analytics weekly to iterate strategy and optimise for reach and saves</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-meta">
+        <span class="exp-tag">Content Strategy</span><br>
+        <span class="exp-tag">Multi-Platform</span><br>
+        <span class="exp-tag">Analytics</span>
+      </div>
+    </div>
+
+    <div class="exp-row" data-aos="fade-up" data-aos-delay="240">
+      <div class="exp-num">05</div>
+      <div class="exp-content">
+        <div class="exp-brand">MUSKURAHAT FOUNDATION</div>
+        <div class="exp-role">Fundraising Intern · Feb 19 – Mar 19, 2024</div>
+        <div class="exp-desc">
+          <ul>
+            <li>Completed a one-month fundraising internship with Muskurahat Foundation, a children's NGO</li>
+            <li>Raised Rs 1,930 for the foundation through personal outreach and community engagement</li>
+            <li>Developed interpersonal communication, persuasion, and cause-marketing skills</li>
+            <li>Awarded Certificate of Completion for demonstrating initiative and performance</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-meta">
+        <span class="exp-tag">NGO · Social Impact</span><br>
+        <span class="exp-tag">Fundraising</span><br>
+        <span class="exp-tag">Communication</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── CERTIFICATIONS ─── -->
+<section id="certifications">
+  <div class="cert-eyebrow" data-aos="fade-up">Certifications & Programs</div>
+  <h2 class="cert-title" data-aos="fade-up" data-aos-delay="80">
+    Always <em>Learning,</em><br>Always <em>Growing.</em>
+  </h2>
+
+  <div class="cert-list">
+    <a href="certificate 2.jpg" onclick="openLB('certificate 2.jpg');return false;">
+      <div class="cert-row" data-aos="fade-up">
+        <div class="cert-idx">01</div>
+        <div class="cert-info">
+          <div class="cert-n">Foundations of Digital Marketing & E-Commerce</div>
+          <div class="cert-by">Google · Coursera · December 2024</div>
+        </div>
+        <div class="cert-arrow"><i class="fas fa-arrow-up-right-from-square"></i> View</div>
+      </div>
+    </a>
+    <a href="certificate 1.jpg" onclick="openLB('certificate 1.jpg');return false;">
+      <div class="cert-row" data-aos="fade-up" data-aos-delay="60">
+        <div class="cert-idx">02</div>
+        <div class="cert-info">
+          <div class="cert-n">P&G Brand Campus Champion Challenge</div>
+          <div class="cert-by">Head & Shoulders · Unstop · March 2026</div>
+        </div>
+        <div class="cert-arrow"><i class="fas fa-arrow-up-right-from-square"></i> View</div>
+      </div>
+    </a>
+    <a href="Certificate_122557_20012025115841.pdf" target="_blank">
+      <div class="cert-row" data-aos="fade-up" data-aos-delay="120">
+        <div class="cert-idx">03</div>
+        <div class="cert-info">
+          <div class="cert-n">Branding and Design</div>
+          <div class="cert-by">Forage · January 2025</div>
+        </div>
+        <div class="cert-arrow"><i class="fas fa-file-pdf"></i> PDF</div>
+      </div>
+    </a>
+    <a href="IIM u .pdf" target="_blank">
+      <div class="cert-row" data-aos="fade-up" data-aos-delay="180">
+        <div class="cert-idx">04</div>
+        <div class="cert-info">
+          <div class="cert-n">Pre-MBA Summer Program</div>
+          <div class="cert-by">IIM Udaipur</div>
+        </div>
+        <div class="cert-arrow"><i class="fas fa-file-pdf"></i> PDF</div>
+      </div>
+    </a>
+    <a href="IIMB swayam.pdf" target="_blank">
+      <div class="cert-row" data-aos="fade-up" data-aos-delay="240">
+        <div class="cert-idx">05</div>
+        <div class="cert-info">
+          <div class="cert-n">IIMB Swayam Certification</div>
+          <div class="cert-by">IIM Bangalore · Swayam</div>
+        </div>
+        <div class="cert-arrow"><i class="fas fa-file-pdf"></i> PDF</div>
+      </div>
+    </a>
+    <a href="Interns certificate.pdf" target="_blank">
+      <div class="cert-row" data-aos="fade-up" data-aos-delay="300">
+        <div class="cert-idx">06</div>
+        <div class="cert-info">
+          <div class="cert-n">Certificate of Completion — Fundraising Internship</div>
+          <div class="cert-by">Muskurahat Foundation · March 2024</div>
+        </div>
+        <div class="cert-arrow"><i class="fas fa-file-pdf"></i> PDF</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ─── SKILLS ─── -->
+<section id="skills">
+  <div class="skills-eyebrow" data-aos="fade-up">Skills & Expertise</div>
+  <div class="skills-cloud" data-aos="fade-up" data-aos-delay="100">
+    <span class="sk lg">Content</span>
+    <span class="sk-sep">·</span>
+    <span class="sk md">Brand Strategy</span>
+    <span class="sk-sep">·</span>
+    <span class="sk lg" style="font-style:italic;">Marketing</span>
+    <span class="sk sm">E-Commerce</span>
+    <span class="sk-sep">·</span>
+    <span class="sk md">Community Building</span>
+    <span class="sk lg">Digital</span>
+    <span class="sk-sep">·</span>
+    <span class="sk md">Brand Analysis</span>
+    <span class="sk sm">Email Marketing</span>
+    <span class="sk-sep">·</span>
+    <span class="sk lg" style="font-style:italic;">Storytelling</span>
+    <span class="sk md">Customer Engagement</span>
+    <span class="sk-sep">·</span>
+    <span class="sk sm">Brand Awareness</span>
+    <span class="sk lg">Strategy</span>
+    <span class="sk-sep">·</span>
+    <span class="sk md">Product Design</span>
+    <span class="sk sm">Media Planning</span>
+  </div>
+  <div class="tools-strip" data-aos="fade-up" data-aos-delay="200">
+    <div class="tool-tag"><span class="tool-tag-icon">🎨</span> Canva</div>
+    <div class="tool-tag"><span class="tool-tag-icon">🎬</span> VN Editor</div>
+    <div class="tool-tag"><span class="tool-tag-icon">✂️</span> InShot</div>
+    <div class="tool-tag"><span class="tool-tag-icon">⚡</span> CapCut</div>
+    <div class="tool-tag"><span class="tool-tag-icon">📊</span> Instagram Business Tools</div>
+    <div class="tool-tag"><span class="tool-tag-icon">📌</span> Pinterest Analytics</div>
+  </div>
+</section>
+
+<!-- ─── EDUCATION ─── -->
+<section id="education">
+  <div class="edu-eyebrow" data-aos="fade-up">Education</div>
+  <h2 class="edu-title" data-aos="fade-up" data-aos-delay="80">
+    The <em>Foundation</em><br>Behind the Work.
+  </h2>
+  <div class="edu-grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
+    <div class="edu-card" data-aos="fade-up" style="border-left-color:var(--gold);">
+      <div class="edu-yr" style="color:var(--gold);">2026 — 2028 · Current</div>
+      <div class="edu-deg">MBA — Human Resource Management</div>
+      <div class="edu-school">Symbiosis Institute of Business Management (SIBM) · Pune</div>
+    </div>
+    <div class="edu-card" data-aos="fade-up" data-aos-delay="80">
+      <div class="edu-yr">2023 — 2026</div>
+      <div class="edu-deg">Bachelor of Commerce (BCom)</div>
+      <div class="edu-school">Christ Church P.G. College · Kanpur</div>
+    </div>
+    <div class="edu-card" data-aos="fade-up" data-aos-delay="160">
+      <div class="edu-yr">2021 — 2023</div>
+      <div class="edu-deg">Senior Secondary (12th)</div>
+      <div class="edu-school">Delhi Public School · Kalyanpur, Kanpur</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MARQUEE 2 ─── -->
+<div class="marquee2">
+  <div class="marquee-track">
+    <span class="marquee-item">HIRE ME</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">BRAND BUILDER</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">CONTENT CREATOR</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">STRATEGIST</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">RESULTS-DRIVEN</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">MARKETING PRO</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">HIRE ME</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">BRAND BUILDER</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">CONTENT CREATOR</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">STRATEGIST</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">RESULTS-DRIVEN</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">MARKETING PRO</span><span class="marquee-dot">✦</span>
+  </div>
+</div>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact">
+  <div class="contact-hero">
+    <div class="contact-bg-text">LET'S WORK</div>
+    <div class="contact-inner">
+      <div class="contact-pre">Open to Opportunities</div>
+      <h2 class="contact-big">LET'S<br><span>WORK.</span></h2>
+      <p class="contact-sub">Marketing roles · Brand collaborations · Internships</p>
+      <a href="mailto:youremail@gmail.com" class="contact-email-link">youremail@gmail.com</a>
+      <div class="social-row">
+        <a href="https://www.instagram.com/_yourfavpunjaban" target="_blank" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@itsanantkaur" target="_blank" class="social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.linkedin.com/in/anant-kaur-113320262" target="_blank" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://pin.it/5dqTT08h7" target="_blank" class="social-btn" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+        <a href="https://snapchat.com/t/uSxrpUxV" target="_blank" class="social-btn" title="Snapchat"><i class="fab fa-snapchat-ghost"></i></a>
+      </div>
+      <a href="resume.html" target="_blank" class="resume-cta">
+        <i class="fas fa-download"></i> Download Resume
+      </a>
+    </div>
+  </div>
+  <footer>
+    <span>© 2026 <span class="accent">Anant Kaur</span> · Marketing Professional</span>
+    <span>Built to <span class="accent">impress.</span></span>
+  </footer>
+</section>
+
+<!-- ─── SCRIPTS ─── -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+/* AOS */
+AOS.init({duration:800,easing:'ease-out-quart',once:true,offset:60});
+
+/* NAV */
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',scrollY>60);
+});
+
+/* CURSOR */
+const cur=document.getElementById('cur'),ring=document.getElementById('curRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY;
+  cur.style.left=(mx-5)+'px';cur.style.top=(my-5)+'px';
+});
+(function tick(){
+  rx+=(mx-rx)*.1;ry+=(my-ry)*.1;
+  ring.style.left=(rx-18)+'px';ring.style.top=(ry-18)+'px';
+  requestAnimationFrame(tick);
+})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.transform='scale(2.2)';ring.style.borderColor='var(--burg)';});
+  el.addEventListener('mouseleave',()=>{cur.style.transform='scale(1)';ring.style.borderColor='rgba(110,23,40,.45)';});
+});
+
+/* COUNTERS */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const el=e.target,target=+el.dataset.target;
+    let cur=0;
+    const step=target/80;
+    const t=setInterval(()=>{
+      cur=Math.min(cur+step,target);
+      el.textContent=Math.floor(cur).toLocaleString();
+      if(cur>=target)clearInterval(t);
+    },20);
+    obs.unobserve(el);
+  });
+},{threshold:.5});
+document.querySelectorAll('.counter').forEach(el=>obs.observe(el));
+
+/* LIGHTBOX */
+function openLB(src){
+  document.getElementById('lbImg').src=src;
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+document.getElementById('lbClose').onclick=closeLB;
+document.getElementById('lb').onclick=e=>{if(e.target===e.currentTarget)closeLB();};
+function closeLB(){document.getElementById('lb').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();});
+</script>
+</body>
+</html>
